@@ -8,6 +8,8 @@ import { SearchBar } from './Searchbar/Searchbar';
 export class App extends Component {
   state = {
 searchQuery: '',
+pictures: [],
+
   };
 
   onSubmitMoveDataToApp = evt => {

@@ -20,7 +20,9 @@ export class SearchBar extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     console.log('handleSubmit', this.state);
-    this.props.moveData(this.state.searchQuery);
+    const normalizedQuery = this.state.searchQuery.toLowerCase().trim('');
+    if (normalizedQuery === '') {alert('Enter query'); return};
+    this.props.moveData(normalizedQuery);
     // this.props.onSubmitMoveDataToApp(this.state);
     
   };

@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Albertukraine/goit-react-hw-03-image-finder.git/static/css/main.9be94129.css",
-    "main.js": "/Albertukraine/goit-react-hw-03-image-finder.git/static/js/main.bc6aef25.js",
+    "main.css": "/Albertukraine/goit-react-hw-03-image-finder.git/static/css/main.450f1b85.css",
+    "main.js": "/Albertukraine/goit-react-hw-03-image-finder.git/static/js/main.433498ab.js",
     "index.html": "/Albertukraine/goit-react-hw-03-image-finder.git/index.html",
-    "main.9be94129.css.map": "/Albertukraine/goit-react-hw-03-image-finder.git/static/css/main.9be94129.css.map",
-    "main.bc6aef25.js.map": "/Albertukraine/goit-react-hw-03-image-finder.git/static/js/main.bc6aef25.js.map"
+    "main.450f1b85.css.map": "/Albertukraine/goit-react-hw-03-image-finder.git/static/css/main.450f1b85.css.map",
+    "main.433498ab.js.map": "/Albertukraine/goit-react-hw-03-image-finder.git/static/js/main.433498ab.js.map"
   },
   "entrypoints": [
-    "static/css/main.9be94129.css",
-    "static/js/main.bc6aef25.js"
+    "static/css/main.450f1b85.css",
+    "static/js/main.433498ab.js"
   ]
 }

@@ -7,7 +7,7 @@ export const ImageGalleryItem = props => {
       <>
         {arrayForCard.map(picture => (
           <li key={picture.id}>
-            <img src={picture.webformatURL}></img>
+            <img src={picture.webformatURL} alt={picture.tags}></img>
           </li>
         ))}
       </>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SearchBar } from './Searchbar/Searchbar';
 import { Loader } from './Loader/Loader';
+import style from './App.module.css';
 
 
 
@@ -25,11 +26,15 @@ export class App extends Component {
     );
   };
 
+
+
   render() {
-    return (<>
+    return (
+      
+      <div className={style.App}>
     <SearchBar moveData={this.onSubmitMoveDataToApp} />
     <Loader wordToLoad={this.state.searchQuery} didMount={this.componentDidMount}/>
-    </>
+    </div>
     ) 
     
     

@@ -4,7 +4,7 @@ import { Button } from 'components/Button/Button';
 
 export class Loader extends Component {
     state = {
-        pictures: null,
+        pictures: [],
         page: 1,
 
       };
@@ -18,21 +18,22 @@ export class Loader extends Component {
 
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.wordToLoad !== this.props.wordToLoad) {
+    if (prevProps.wordToLoad !== this.props.wordToLoad || prevState.page !== this.state.page) {
       const word = this.props.wordToLoad;
       const key = '22104578-b37830bb47769ec8fcc7503cc';
       fetch(
         `https://pixabay.com/api/?q=${word}&page=${this.state.page}&key=${key}&image_type=photo&orientation=horizontal&per_page=12`
       )
         .then(response => response.json())
-        .then(res => this.setState({pictures: res.hits})).then(console.log("in loader",this.state))
+        .then(res => this.setState(prevState =>({pictures: [...prevState.pictures, ...res.hits]}))).then(console.log("in loader",this.state))
     }
   }
 
+
   render() {
     return <>
-    <ImageGallery arrayToRender={this.state.pictures}/>
-    <Button onClick={this.onClick}/>
+    <ImageGallery page={this.state.page} arrayToRender={this.state.pictures}/>
+    {this.state.pictures && <Button onClick={this.onClick} loadMore={this.componentDidUpdate}/>}
     </>;
   }
 }

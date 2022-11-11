@@ -9,13 +9,13 @@ export class App extends Component {
     searchQuery: '',
   };
 
-  componentDidMount() {
-    fetch(
-      'https://pixabay.com/api/?q=cat&page=1&key=22104578-b37830bb47769ec8fcc7503cc&image_type=photo&orientation=horizontal&per_page=12'
-    )
-      .then(res => res.json())
-      .then(res => this.setState({pictures: res}));
-  }
+  // componentDidMount() {
+  //   fetch(
+  //     'https://pixabay.com/api/?q=cat&page=1&key=22104578-b37830bb47769ec8fcc7503cc&image_type=photo&orientation=horizontal&per_page=12'
+  //   )
+  //     .then(res => res.json())
+  //     .then(res => this.setState({pictures: res}));
+  // }
 
   onSubmitMoveDataToApp = evt => { 
     this.setState({ searchQuery: evt });

@@ -6,9 +6,16 @@ import style from './App.module.css';
 export class App extends Component {
   state = {
     searchQuery: '',
-    showLoadMore: false,
+    page: 1,
     
     
+  };
+
+  onClickLoadMore = () => {
+    
+    this.setState(prevValue => {
+      return { page: prevValue.page + 1 };
+    });
   };
 
   // componentDidMount() {
@@ -20,7 +27,7 @@ export class App extends Component {
   // }
 
   onSubmitMoveDataToApp = evt => {
-    this.setState({ searchQuery: evt });
+    this.setState({ searchQuery: evt, page: 1 });
     setTimeout(
       () => console.log('what we have on app state', this.state),
       1000
@@ -30,8 +37,8 @@ export class App extends Component {
   render() {
     return (
       <div className={style.App}>
-        <SearchBar moveData={this.onSubmitMoveDataToApp} />
-        <ImageGallery clearPreventGallery={this.state.clearPreventGallery} wordToLoad={this.state.searchQuery} showLoadMore={this.state.showLoadMore}/>
+        <SearchBar moveData={this.onSubmitMoveDataToApp}/>
+        <ImageGallery onClickLoadMore={this.onClickLoadMore} wordToLoad={this.state.searchQuery} page={this.state.page} />
       </div>
     );
   }

@@ -5,13 +5,14 @@ import style from './Searchbar.module.css';
 export class SearchBar extends Component {
   state = {
     searchQuery: '',
+    page: 1,
   };
 
 
   handleInputChange = evt => {
     const { name, value } = evt.currentTarget;
     this.setState({
-      [name]: value,
+      [name]: value, page: 1
     });
     setTimeout(() => console.log('STATE SET TIMEOUT', this.state), 1000);
     console.log(evt.currentTarget.value);

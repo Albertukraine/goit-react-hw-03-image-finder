@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { SearchBar } from './Searchbar/Searchbar';
-import { Loader } from './Loader/Loader';
+import { ImageGallery } from './ImageGallery/ImageGallery';
 import style from './App.module.css';
-
-
 
 export class App extends Component {
   state = {
     searchQuery: '',
+    showLoadMore: false,
+    
+    
   };
 
   // componentDidMount() {
@@ -18,7 +19,7 @@ export class App extends Component {
   //     .then(res => this.setState({pictures: res}));
   // }
 
-  onSubmitMoveDataToApp = evt => { 
+  onSubmitMoveDataToApp = evt => {
     this.setState({ searchQuery: evt });
     setTimeout(
       () => console.log('what we have on app state', this.state),
@@ -26,17 +27,12 @@ export class App extends Component {
     );
   };
 
-
-
   render() {
     return (
-      
       <div className={style.App}>
-    <SearchBar moveData={this.onSubmitMoveDataToApp} />
-    <Loader wordToLoad={this.state.searchQuery} didMount={this.componentDidMount}/>
-    </div>
-    ) 
-    
-    
+        <SearchBar moveData={this.onSubmitMoveDataToApp} />
+        <ImageGallery clearPreventGallery={this.state.clearPreventGallery} wordToLoad={this.state.searchQuery} showLoadMore={this.state.showLoadMore}/>
+      </div>
+    );
   }
 }

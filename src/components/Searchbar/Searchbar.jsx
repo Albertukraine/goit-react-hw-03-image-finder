@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import style from './Searchbar.module.css';
 
@@ -16,6 +17,7 @@ export class SearchBar extends Component {
     console.log(evt.currentTarget.value);
   };
 
+ 
 
   handleSubmit = evt => {
     evt.preventDefault();
@@ -56,4 +58,9 @@ export class SearchBar extends Component {
       </header>
     );
   }
+}
+
+
+SearchBar.propTypes = {
+  moveData: PropTypes.func
 }

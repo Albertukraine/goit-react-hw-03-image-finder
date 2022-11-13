@@ -1,6 +1,5 @@
 import style from './ImageGalleryItem.module.css';
 
-
 export const ImageGalleryItem = props => {
   const { arrayForCard } = props;
 
@@ -10,7 +9,12 @@ export const ImageGalleryItem = props => {
       <>
         {arrayForCard.map(picture => (
           <li className={style.ImageGalleryItem} key={picture.id}>
-            <img loading='lazy' className={style.ImageGalleryItemImage} src={picture.webformatURL} alt={picture.tags}></img>
+            <img
+              loading="lazy"
+              className={style.ImageGalleryItemImage}
+              src={picture.webformatURL}
+              alt={picture.tags}
+            ></img>
           </li>
         ))}
       </>

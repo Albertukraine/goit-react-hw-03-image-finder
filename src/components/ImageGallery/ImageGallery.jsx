@@ -6,13 +6,10 @@ import { Button } from 'components/Button/Button';
 export class ImageGallery extends Component {
   state = {
     pictures: [],
-   
   };
 
-
   componentDidUpdate(prevProps, prevState) {
-   
-    console.log("props Image Gallery",this.props);
+    console.log('props Image Gallery', this.props);
 
     if (
       prevProps.wordToLoad !== this.props.wordToLoad ||
@@ -35,20 +32,19 @@ export class ImageGallery extends Component {
     }
   }
 
-  
   render() {
     return (
       <>
-      
         <ul className={style.ImageGallery}>
           <ImageGalleryItem arrayForCard={this.state.pictures} />
         </ul>
-        { this.state.pictures.length > 1 && Number.isInteger(this.state.pictures.length/12) && (
-          <Button
-            onClick={this.props.onClickLoadMore}
-            loadMore={this.componentDidUpdate}
-          />
-        )}
+        {this.state.pictures.length > 1 &&
+          Number.isInteger(this.state.pictures.length / 12) && (
+            <Button
+              onClick={this.props.onClickLoadMore}
+              loadMore={this.componentDidUpdate}
+            />
+          )}
       </>
     );
   }

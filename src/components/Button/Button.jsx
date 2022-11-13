@@ -11,5 +11,5 @@ export const Button = props => {
 };
 
 Button.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };

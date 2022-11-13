@@ -3,15 +3,23 @@ import { SearchBar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import style from './App.module.css';
 import { Button } from 'components/Button/Button';
+import { Loader } from './Loader/Loader';
 
 export class App extends Component {
   state = {
     searchQuery: '',
     page: 1,
     pictures: [],
+    loading: false,
+    modalIsShow: false,
     
     
   };
+
+  onImageClick = evt => {
+    this.setState({modalIsShow: true});
+    console.log("Po Kartinke",evt.currentTarget)};
+  
 
   onClickLoadMore = () => {
     
@@ -39,6 +47,7 @@ export class App extends Component {
     ) {
       const word = this.state.searchQuery;
       const key = '22104578-b37830bb47769ec8fcc7503cc';
+      this.setState({loading: true});
       fetch(
         `https://pixabay.com/api/?q=${word}&page=${this.state.page}&key=${key}&image_type=photo&orientation=horizontal&per_page=12`
       )
@@ -48,9 +57,7 @@ export class App extends Component {
             pictures: [...prevState.pictures, ...res.hits],
           }))
         )
-        .then(value => {
-          console.log(value);
-        });
+        .finally(() => this.setState({loading: false}));
     }
   }
 
@@ -59,14 +66,18 @@ export class App extends Component {
   render() {
     return (
       <div className={style.App}>
+        
         <SearchBar moveData={this.onSubmitMoveDataToApp}/>
-        <ImageGallery onClickLoadMore={this.onClickLoadMore} picturesArray={this.state.pictures} />
+       
+        <ImageGallery onImageClick={this.onImageClick} onClickLoadMore={this.onClickLoadMore} picturesArray={this.state.pictures} />
+        
         {this.state.pictures.length > 1 &&
           Number.isInteger(this.state.pictures.length / 12) && (
             <Button
               onClick={this.onClickLoadMore}
             />
           )}
+           <Loader isLoading={this.state.loading}/>
       </div>
     );
   }

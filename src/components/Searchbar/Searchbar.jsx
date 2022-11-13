@@ -8,8 +8,6 @@ export class SearchBar extends Component {
     page: 1,
   };
 
-
-
   handleInputChange = evt => {
     const { name, value } = evt.currentTarget;
     this.setState({

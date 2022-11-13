@@ -14,24 +14,18 @@ export class App extends Component {
     loading: false,
     modalIsShow: false,
     currentPictureURL: null,
-    
-    
   };
 
   onImageClick = evt => {
-    this.setState({modalIsShow: true});
-    this.setState({currentPictureURL: evt});
+    this.setState({ modalIsShow: true });
+    this.setState({ currentPictureURL: evt });
+  };
 
-    console.log("Po Kartinke", evt)};
-
-onModalClick = evt => {
-  this.setState({modalIsShow: false})
-};
-    
-  
+  onModalClick = evt => {
+    this.setState({ modalIsShow: false });
+  };
 
   onClickLoadMore = () => {
-    
     this.setState(prevValue => {
       return { page: prevValue.page + 1 };
     });
@@ -45,10 +39,10 @@ onModalClick = evt => {
     // );
   };
 
-
-  componentDidUpdate (_, prevState) {
-     console.log('STATE compDidUpDate', this.state);
-     if (prevState.searchQuery !== this.state.searchQuery) {this.setState({pictures: []})};
+  componentDidUpdate(_, prevState) {
+    if (prevState.searchQuery !== this.state.searchQuery) {
+      this.setState({ pictures: [] });
+    }
 
     if (
       prevState.searchQuery !== this.state.searchQuery ||
@@ -56,7 +50,7 @@ onModalClick = evt => {
     ) {
       const word = this.state.searchQuery;
       const key = '22104578-b37830bb47769ec8fcc7503cc';
-      this.setState({loading: true});
+      this.setState({ loading: true });
       fetch(
         `https://pixabay.com/api/?q=${word}&page=${this.state.page}&key=${key}&image_type=photo&orientation=horizontal&per_page=12`
       )
@@ -66,29 +60,32 @@ onModalClick = evt => {
             pictures: [...prevState.pictures, ...res.hits],
           }))
         )
-        .finally(() => this.setState({loading: false}));
+        .finally(() => this.setState({ loading: false }));
     }
   }
-
- 
 
   render() {
     return (
       <div className={style.App}>
-        
-        <SearchBar moveData={this.onSubmitMoveDataToApp}/>
-       
-        <ImageGallery onImageClick={this.onImageClick} onClickLoadMore={this.onClickLoadMore} picturesArray={this.state.pictures} />
-        
+        <SearchBar moveData={this.onSubmitMoveDataToApp} />
+
+        <ImageGallery
+          onImageClick={this.onImageClick}
+          onClickLoadMore={this.onClickLoadMore}
+          picturesArray={this.state.pictures}
+        />
+
         {this.state.pictures.length > 1 &&
           Number.isInteger(this.state.pictures.length / 12) && (
-            <Button
-              onClick={this.onClickLoadMore}
-            />
+            <Button onClick={this.onClickLoadMore} />
           )}
-           <Loader isLoading={this.state.loading}/>
-           {this.state.modalIsShow && <Modal currentPictureURL={this.state.currentPictureURL} onModalClick={this.onModalClick}/>}
-           
+        <Loader isLoading={this.state.loading} />
+        {this.state.modalIsShow && (
+          <Modal
+            currentPictureURL={this.state.currentPictureURL}
+            onModalClick={this.onModalClick}
+          />
+        )}
       </div>
     );
   }

@@ -10,15 +10,16 @@ export const ImageGallery = props => {
   return (
     <>
       <ul className={style.ImageGallery}>
-        <ImageGalleryItem arrayForCard={picturesArray} onImageClick={onImageClick} />
+        <ImageGalleryItem
+          arrayForCard={picturesArray}
+          onImageClick={onImageClick}
+        />
       </ul>
     </>
   );
 };
 
-
-
 ImageGallery.propTypes = {
   picturesArray: PropTypes.array.isRequired,
-  onImageClick: PropTypes.func.isRequired
+  onImageClick: PropTypes.func.isRequired,
 };

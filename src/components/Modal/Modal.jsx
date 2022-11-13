@@ -1,4 +1,5 @@
-import style from './Modal.module.css'
+import style from './Modal.module.css';
+import PropTypes from 'prop-types';
 
 export const Modal = props => {
     const {onModalClick, currentPictureURL} = props;
@@ -10,3 +11,8 @@ export const Modal = props => {
     </div>
   </div>
 }
+
+Modal.propTypes = {
+    onModalClick: PropTypes.func.isRequired,
+    currentPictureURL: PropTypes.string.isRequired
+};

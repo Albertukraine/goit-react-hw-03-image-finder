@@ -8,40 +8,33 @@ export class SearchBar extends Component {
     page: 1,
   };
 
-
   handleInputChange = evt => {
     const { name, value } = evt.currentTarget;
     this.setState({
-      [name]: value, page: 1
+      [name]: value,
+      page: 1,
     });
     setTimeout(() => console.log('STATE SET TIMEOUT', this.state), 1000);
     console.log(evt.currentTarget.value);
   };
 
- 
-
   handleSubmit = evt => {
     evt.preventDefault();
     console.log('handleSubmit', this.state);
     const normalizedQuery = this.state.searchQuery.toLowerCase().trim('');
-    if (normalizedQuery === '') {alert('Enter query'); return};
+    if (normalizedQuery === '') {
+      alert('Enter query');
+      return;
+    }
     this.props.moveData(normalizedQuery);
     // this.props.onSubmitMoveDataToApp(this.state);
-    
   };
-  
 
   render() {
     return (
       <header className={style.Searchbar}>
-        <form 
-        className={style.SearchForm}
-        onSubmit={this.handleSubmit}>
-          <button 
-          type="submit" 
-          className={style.SearchFormButton}
-          
-          >
+        <form className={style.SearchForm} onSubmit={this.handleSubmit}>
+          <button type="submit" className={style.SearchFormButton}>
             <span className={style.SearchFormButtonLabel}>Search</span>
           </button>
 
@@ -61,7 +54,6 @@ export class SearchBar extends Component {
   }
 }
 
-
 SearchBar.propTypes = {
-  moveData: PropTypes.func
-}
+  moveData: PropTypes.func,
+};

@@ -5,17 +5,17 @@ export const ImageGalleryItem = props => {
   const { arrayForCard, onImageClick } = props;
 
   if (arrayForCard) {
-    console.log('props in card', arrayForCard);
+    console.log('props in card', props);
     return (
       <>
         {arrayForCard.map(picture => (
-          <li className={style.ImageGalleryItem} key={picture.id}>
+          <li className={style.ImageGalleryItem} key={picture.id} href={picture.largeImageURL}>
             <img
               loading="lazy"
               className={style.ImageGalleryItemImage}
               src={picture.webformatURL}
               alt={picture.tags}
-              onClick={onImageClick}
+              onClick={() => onImageClick(picture.largeImageURL)}
             ></img>
           </li>
         ))}

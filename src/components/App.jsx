@@ -4,6 +4,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import style from './App.module.css';
 import { Button } from 'components/Button/Button';
 import { Loader } from './Loader/Loader';
+import { Modal } from './Modal/Modal';
 
 export class App extends Component {
   state = {
@@ -12,13 +13,21 @@ export class App extends Component {
     pictures: [],
     loading: false,
     modalIsShow: false,
+    currentPictureURL: null,
     
     
   };
 
   onImageClick = evt => {
     this.setState({modalIsShow: true});
-    console.log("Po Kartinke",evt.currentTarget)};
+    this.setState({currentPictureURL: evt});
+
+    console.log("Po Kartinke", evt)};
+
+onModalClick = evt => {
+  this.setState({modalIsShow: false})
+};
+    
   
 
   onClickLoadMore = () => {
@@ -30,10 +39,10 @@ export class App extends Component {
 
   onSubmitMoveDataToApp = evt => {
     this.setState({ searchQuery: evt, page: 1 });
-    setTimeout(
-      () => console.log('what we have on app state', this.state),
-      1000
-    );
+    // setTimeout(
+    //   () => console.log('what we have on app state', this.state),
+    //   1000
+    // );
   };
 
 
@@ -78,6 +87,8 @@ export class App extends Component {
             />
           )}
            <Loader isLoading={this.state.loading}/>
+           {this.state.modalIsShow && <Modal currentPictureURL={this.state.currentPictureURL} onModalClick={this.onModalClick}/>}
+           
       </div>
     );
   }

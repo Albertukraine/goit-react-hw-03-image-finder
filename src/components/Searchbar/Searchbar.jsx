@@ -16,13 +16,13 @@ export class SearchBar extends Component {
       [name]: value,
       page: 1,
     });
-    setTimeout(() => console.log('STATE SET TIMEOUT', this.state), 1000);
-    console.log(evt.currentTarget.value);
+    // setTimeout(() => console.log('STATE SET TIMEOUT', this.state), 1000);
+    // console.log(evt.currentTarget.value);
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
-    console.log('handleSubmit', this.state);
+    // console.log('handleSubmit', this.state);
     const normalizedQuery = this.state.searchQuery.toLowerCase().trim('');
     if (normalizedQuery === '') {
       alert('Enter query');

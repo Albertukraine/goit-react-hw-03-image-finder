@@ -14,7 +14,7 @@ export class App extends Component {
     loading: false,
     modalIsShow: false,
     currentPictureURL: null,
-    escPress: false,
+   
   };
 
   onImageClick = evt => {

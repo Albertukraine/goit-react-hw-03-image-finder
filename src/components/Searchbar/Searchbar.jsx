@@ -14,6 +14,7 @@ export class SearchBar extends Component {
       [name]: value,
       page: 1,
     });
+   
     // setTimeout(() => console.log('STATE SET TIMEOUT', this.state), 1000);
     // console.log(evt.currentTarget.value);
   };

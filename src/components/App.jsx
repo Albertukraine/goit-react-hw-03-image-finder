@@ -14,6 +14,7 @@ export class App extends Component {
     loading: false,
     modalIsShow: false,
     currentPictureURL: null,
+    escPress: false,
   };
 
   onImageClick = evt => {
@@ -38,6 +39,14 @@ export class App extends Component {
     //   1000
     // );
   };
+
+  componentDidMount() {
+    window.addEventListener('keydown', evt => {
+      if (evt.code === 'Escape') {
+        this.setState({ modalIsShow: false });
+      }
+    });
+  }
 
   componentDidUpdate(_, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
@@ -84,6 +93,7 @@ export class App extends Component {
           <Modal
             currentPictureURL={this.state.currentPictureURL}
             onModalClick={this.onModalClick}
+            handleKeyPress={this.handleKeyPress}
           />
         )}
       </div>
